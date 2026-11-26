@@ -23,7 +23,7 @@ export default function PrivacyPage() {
         <section>
           <h2>Information we collect</h2>
           <p>
-            When you submit the enquiry form we receive the details you provide: your name, email address, optional business name, the service you need, optional budget and timeline, and your project description. If you contact us by email or WhatsApp, we receive the information you send.
+            The enquiry form on this website does not store or transmit your details to our servers. It prepares a message (your name, email address, optional business name, the service you need, optional budget and timeline, and your project description) in WhatsApp or your email app, and we receive it only if you choose to send it. If you contact us directly by email or WhatsApp, we receive the information you send.
           </p>
         </section>
         <section>
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
         </section>
         <section>
           <h2>Service providers</h2>
-          <p>Enquiries are delivered through a third-party email provider and the website is hosted on Vercel. These providers process data on our behalf to operate the service.</p>
+          <p>The website is hosted on Vercel. Messages you send by WhatsApp or email pass through those services under their own privacy policies.</p>
         </section>
         <section>
           <h2>Retention</h2>

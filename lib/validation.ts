@@ -17,10 +17,6 @@ export const contactSchema = z.object({
     .trim()
     .min(20, "Please share a little more detail (at least 20 characters).")
     .max(4000, "Please keep your message under 4,000 characters."),
-  /** Honeypot — real users never fill this in. */
-  website: z.string().max(200),
-  /** Timestamp (ms) set when the form was rendered; used to reject instant bot submissions. */
-  startedAt: z.number(),
 });
 
 export type ContactValues = z.infer<typeof contactSchema>;

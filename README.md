@@ -2,7 +2,7 @@
 
 Website for **C-DESIGN: Design. Develop. Deliver.**, an independent web design and development studio.
 
-Stack: Next.js (App Router) · TypeScript (strict) · Tailwind CSS v4 · Lucide · Framer Motion · React Hook Form + Zod · Resend (email) · Vercel.
+Stack: Next.js (App Router) · TypeScript (strict) · Tailwind CSS v4 · Lucide · Framer Motion · React Hook Form + Zod · Vercel.
 
 ## Quick start
 
@@ -40,23 +40,20 @@ Add, edit or remove entries in `lib/projects.ts`. Detail pages, the sitemap and 
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | public | Digits with country code, e.g. `15551234567` |
 | `NEXT_PUBLIC_INSTAGRAM_URL`, `NEXT_PUBLIC_LINKEDIN_URL` | public | Social links |
 | `NEXT_PUBLIC_PORTFOLIO_URL`, `NEXT_PUBLIC_LOCATION` | public | Optional overrides for the portfolio link and location |
-| `RESEND_API_KEY` | **secret** | Resend API key |
-| `CONTACT_TO_EMAIL` | **secret** | Inbox that receives enquiries |
-| `CONTACT_FROM_EMAIL` | **secret** | Sender on a domain verified in Resend |
 
-Never prefix secrets with `NEXT_PUBLIC_`.
+No secret keys are needed. Do not commit real `.env` files.
 
 ## Contact form
 
-`POST /api/contact` validates with the same Zod schema as the client, checks same-origin, limits request size, rate-limits per IP (in memory; use Upstash/Vercel KV for stricter limits), uses a honeypot plus minimum-fill-time check, and sends via Resend. If the three email variables are not set, the endpoint returns a clear 503 and the form tells visitors to use email or WhatsApp. It never pretends to succeed.
+The enquiry form validates input in the browser (React Hook Form + Zod). When a visitor clicks **Send via WhatsApp** or **Send via Email**, WhatsApp (`wa.me`) or their email app (`mailto:`) opens with the enquiry prefilled for the studio's number and address from `lib/site.ts`. Nothing is stored on a server and no API keys are required. A button is hidden if its contact detail is not set.
 
 ## Deploy to Vercel
 
 1. Push the repo to GitHub.
 2. Import it at vercel.com/new (framework is auto-detected).
-3. Add the environment variables above in Project Settings → Environment Variables.
+3. Add the public environment variables above in Project Settings → Environment Variables (optional, since defaults live in `lib/site.ts`).
 4. Deploy, then add your custom domain and set `NEXT_PUBLIC_SITE_URL` to it (redeploy afterwards).
 
 ## Before going live
 
-Add a founder photo (`photo` in `lib/site.ts`, file in `public/images/`), add Instagram/LinkedIn links when you have them, swap concept projects for real work and screenshots as you complete it, verify your Resend domain and send a test enquiry.
+Add a founder photo (`photo` in `lib/site.ts`, file in `public/images/`), add Instagram/LinkedIn links when you have them, swap concept projects for real work and screenshots as you complete it, send a test enquiry through both buttons.
