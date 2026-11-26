@@ -20,6 +20,8 @@ export type Project = {
   concept: boolean;
   /** true = real personal project built by the founder (not client work). Source is public on GitHub. */
   personal?: boolean;
+  /** Optional honest caveat shown on the project page. */
+  note?: string;
   /** Public GitHub repository, if any. */
   repo?: string;
   /** Live URL, if any. Omit for concepts. */
@@ -127,7 +129,7 @@ export const projects: Project[] = [
     year: 2025,
     summary: "A responsive front-end landing page for an online learning platform.",
     description:
-      "A personal front-end project built with plain HTML, CSS and JavaScript: a landing page for an online learning platform with course, resource and pricing sections.",
+      "A personal front-end project built with plain HTML, CSS and JavaScript: a multi-section website for an online learning platform, with about, impact, course, resource, fees and contact sections.",
     stack: ["HTML5", "CSS3", "JavaScript"],
     concept: false,
     personal: true,
@@ -138,15 +140,48 @@ export const projects: Project[] = [
       "A learning platform needs to explain what it offers quickly. This project is a single-page front end covering the platform's courses, study resources, plans and contact details.",
     approach: [
       "Built without frameworks to keep the page light and the code easy to follow.",
-      "Organised into clear sections: about, learning resources, courses, pricing plans and contact.",
+      "Organised into clear sections: about, impact figures, learning resources, courses, fee plans and contact, with a detailed footer of quick links and popular resources.",
       "Includes searchable learning resources and sign-in and dashboard interface screens.",
     ],
+    note: "The credentials, impact figures, addresses and phone numbers shown in this demo are sample content for a design exercise, not verified claims.",
     features: [
+      "About section with mission statement and credentials block",
+      "Impact statistics section",
       "Course and learning-resource sections",
       "Resource search",
       "Pricing plans section",
       "Contact section",
       "Account sign-in and dashboard interface screens",
+    ],
+  },
+  {
+    slug: "epic-studio",
+    title: "EPIC STUDIO",
+    category: "Website",
+    year: 2026,
+    summary: "A dark, neon-green single-page website for a creative studio offering posters, video and branding.",
+    description:
+      "A personal project: a mobile-first website for a freelance creative studio, with a services overview, portfolio gallery, process section and an enquiry form that opens a prefilled WhatsApp message.",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    concept: false,
+    personal: true,
+    repo: "https://github.com/epicstudioep-creator/Epic-Studio",
+    image: { src: "/images/epic-studio.png", alt: "EPIC STUDIO home page with the headline We Make Your Ideas Epic and service tags for posters, video, branding and thumbnails", width: 1871, height: 804 },
+    note: "EPIC STUDIO is a separate creative studio from C-DESIGN. Its portfolio tiles are labelled as sample placeholders until real work is added.",
+    visual: { variant: "editorial", accent: "#3B82F6" },
+    brief:
+      "A creative studio needs to show what it makes and make it easy to get in touch. This project is a single-page site covering the studio's services, work, process and enquiries.",
+    approach: [
+      "Built as a single page with a dark theme and neon-green accent, designed mobile-first.",
+      "Services, portfolio entries, budget options and contact details are kept in editable config files.",
+      "The enquiry form validates input and opens WhatsApp with a prefilled message, so it needs no backend.",
+    ],
+    features: [
+      "Six services: poster design, video editing, logo and branding, social media design, thumbnails and promotional videos",
+      "Portfolio gallery for images and video",
+      "Process section and values",
+      "Enquiry form with validation and WhatsApp handoff",
+      "Custom 404 page, SEO and Open Graph metadata",
     ],
   },
   {

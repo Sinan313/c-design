@@ -100,6 +100,7 @@ export default async function ProjectPage({ params }: Props) {
                 A personal project by {site.founder.name}. It is not client work, and no business results are claimed.
               </p>
             )}
+            {project.note && <p className="mt-4 text-sm leading-relaxed text-muted">{project.note}</p>}
             {project.repo && (
               <a href={project.repo} target="_blank" rel="noopener noreferrer" className={`${buttonVariants({ variant: "secondary" })} mt-6 w-full`}>
                 View on GitHub <ArrowUpRight className="size-4" />
