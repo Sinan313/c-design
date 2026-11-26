@@ -45,6 +45,7 @@ export const projects: Project[] = [
     concept: false,
     personal: true,
     repo: "https://github.com/Sinan313/jansankalp-ai",
+    image: { src: "/images/jansankalp-ai.png", alt: "JanSankalp AI home page with the headline Turning citizen voices into development intelligence and summary figures for prototype data", width: 1578, height: 805 },
     visual: { variant: "dashboard", accent: "#2563EB" },
     brief:
       "Public requests for local development, such as water, healthcare or roads, arrive in many languages and are hard to compare. Jansankalp AI is a prototype that structures those requests and sets them beside infrastructure indicators.",
@@ -131,6 +132,7 @@ export const projects: Project[] = [
     concept: false,
     personal: true,
     repo: "https://github.com/Sinan313/c-tectsolutions",
+    image: { src: "/images/c-tech-solutions.png", alt: "C-Tech Solutions landing page with navigation, headline and Explore Courses button", width: 1703, height: 793 },
     visual: { variant: "storefront", accent: "#3B82F6" },
     brief:
       "A learning platform needs to explain what it offers quickly. This project is a single-page front end covering the platform's courses, study resources, plans and contact details.",
