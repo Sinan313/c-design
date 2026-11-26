@@ -25,7 +25,7 @@ export default function TermsPage() {
         </section>
         <section>
           <h2>Portfolio and concept projects</h2>
-          <p>Projects labelled as concepts are self-initiated and use fictional brands. They are shown to illustrate our design and development approach and do not represent real clients or results.</p>
+          <p>Projects labelled as concepts are self-initiated and use fictional brands. They are shown to illustrate our design and development approach and do not represent real clients or results. Projects labelled as personal projects are real software built by the founder and linked to their public GitHub repositories; they are not client work.</p>
         </section>
         <section>
           <h2>Intellectual property</h2>

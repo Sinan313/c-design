@@ -15,7 +15,7 @@ export function ProjectVisual({ project, priority = false }: { project: Project;
         height={project.image.height}
         priority={priority}
         sizes="(min-width: 1024px) 60vw, 100vw"
-        className="h-full w-full object-cover"
+        className="h-full w-full bg-bg-2 object-contain"
       />
     );
   }
@@ -24,7 +24,7 @@ export function ProjectVisual({ project, priority = false }: { project: Project;
   return (
     <div
       role="img"
-      aria-label={`Abstract concept artwork for ${project.title}, a ${project.category.toLowerCase()} concept`}
+      aria-label={`Abstract artwork for ${project.title}, a ${project.category.toLowerCase()} project`}
       className="relative h-full w-full overflow-hidden bg-bg-2"
     >
       <div

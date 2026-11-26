@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { ProjectVisual } from "@/components/ui/project-visual";
 import { buttonVariants } from "@/components/ui/button";
 import { getProject, projects } from "@/lib/projects";
+import { site } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -46,6 +47,7 @@ export default async function ProjectPage({ params }: Props) {
             <span className="font-mono text-xs tracking-wider text-primary-hover">{project.category.toUpperCase()}</span>
             <span className="text-xs text-muted">{project.year}</span>
             {project.concept && <span className="rounded-full border border-line px-2.5 py-0.5 text-[11px] text-muted">Self-initiated concept</span>}
+            {project.personal && <span className="rounded-full border border-line px-2.5 py-0.5 text-[11px] text-muted">Personal project</span>}
           </div>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-6xl">{project.title}</h1>
           <p className="mt-6 text-lg leading-relaxed text-muted">{project.description}</p>
@@ -92,6 +94,17 @@ export default async function ProjectPage({ params }: Props) {
               <p className="mt-6 text-sm leading-relaxed text-muted">
                 This is a self-initiated concept for a fictional brand. It is not client work and does not represent real business results.
               </p>
+            )}
+            {project.personal && (
+              <p className="mt-6 text-sm leading-relaxed text-muted">
+                A personal project by {site.founder.name}. It is not client work, and no business results are claimed.
+              </p>
+            )}
+            {project.repo && (
+              <a href={project.repo} target="_blank" rel="noopener noreferrer" className={`${buttonVariants({ variant: "secondary" })} mt-6 w-full`}>
+                View on GitHub <ArrowUpRight className="size-4" />
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
             )}
             {project.url && (
               <a href={project.url} target="_blank" rel="noopener noreferrer" className={`${buttonVariants({ variant: "secondary" })} mt-6 w-full`}>

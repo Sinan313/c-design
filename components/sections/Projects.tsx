@@ -26,6 +26,9 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
           {project.concept && (
             <span className="rounded-full border border-line px-2.5 py-0.5 text-[11px] text-muted">Concept project</span>
           )}
+          {project.personal && (
+            <span className="rounded-full border border-line px-2.5 py-0.5 text-[11px] text-muted">Personal project</span>
+          )}
         </div>
         <h3 className="mt-3 text-2xl font-semibold tracking-tight">{project.title}</h3>
         <p className="mt-3 leading-relaxed text-muted">{project.summary}</p>
@@ -55,7 +58,7 @@ export function Projects() {
               id="projects-heading"
               label="SELECTED WORK"
               title="Digital experiences made with purpose."
-              description="Our first projects are self-initiated concepts that show how we think about design and build. Client work will appear here as it is delivered."
+              description="Personal projects and self-initiated concepts that show how we think about design and build. Client work will appear here as it is delivered."
             />
           </Reveal>
           <Link href="/projects" className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-white">
@@ -68,7 +71,7 @@ export function Projects() {
             <Reveal className="lg:col-span-2">
               <ProjectCard project={first} featured />
             </Reveal>
-            {rest.map((p, i) => (
+            {rest.slice(0, 3).map((p, i) => (
               <Reveal key={p.slug} delay={i * 0.08}>
                 <ProjectCard project={p} />
               </Reveal>

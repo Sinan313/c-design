@@ -2,8 +2,8 @@
  * Centralised portfolio data. Add, edit or remove entries here — pages, sitemap
  * and static routes are generated from this array.
  *
- * IMPORTANT: the entries below are self-initiated CONCEPTS, not client work.
- * Keep `concept: true` for those. Never add invented clients or results.
+ * IMPORTANT: nothing here is client work. Fictional-brand entries use `concept: true`;
+ * real personal projects use `personal: true` plus a `repo` link. Never add invented clients or results.
  *
  * To use a real screenshot, drop it in /public/images and set
  * image: { src: "/images/name.png", alt: "Describe the screenshot", width: 1600, height: 1000 }
@@ -16,8 +16,12 @@ export type Project = {
   summary: string;
   description: string;
   stack: string[];
-  /** true = self-initiated concept; false = delivered client work. */
+  /** true = self-initiated concept for a fictional brand. */
   concept: boolean;
+  /** true = real personal project built by the founder (not client work). Source is public on GitHub. */
+  personal?: boolean;
+  /** Public GitHub repository, if any. */
+  repo?: string;
   /** Live URL, if any. Omit for concepts. */
   url?: string;
   image?: { src: string; alt: string; width: number; height: number };
@@ -29,6 +33,120 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "jansankalp-ai",
+    title: "Jansankalp AI",
+    category: "AI Web App",
+    year: 2026,
+    summary: "A prototype that turns citizen development requests into AI-assisted, human-reviewed assessments.",
+    description:
+      "A personal project exploring how citizen requests and district-level indicators could be combined to highlight development needs. Gemini analyses each request, and results are presented as prototype assessments for further human review.",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Google Gemini API"],
+    concept: false,
+    personal: true,
+    repo: "https://github.com/Sinan313/jansankalp-ai",
+    visual: { variant: "dashboard", accent: "#2563EB" },
+    brief:
+      "Public requests for local development, such as water, healthcare or roads, arrive in many languages and are hard to compare. Jansankalp AI is a prototype that structures those requests and sets them beside infrastructure indicators.",
+    approach: [
+      "Citizen requests are collected as text and analysed with the Gemini API to identify language, category, issue and urgency.",
+      "Request data is combined with district indicators such as water, healthcare, education, road quality, digital connectivity, transport, sanitation and electricity access.",
+      "AI output is framed as an explainable prototype assessment for human review, not an automatic decision.",
+    ],
+    features: [
+      "Citizen request submission and AI analysis",
+      "Dashboard and development-coverage views",
+      "Citizen request and public project listings",
+      "District hotspot and recommendation API routes",
+      "Sample datasets stored as JSON",
+      "Handling for temporary AI service errors",
+    ],
+  },
+  {
+    slug: "student-management-system",
+    title: "Student Management System",
+    category: "Desktop App",
+    year: 2026,
+    summary: "A Java Swing desktop app for adding, searching, updating and deleting student records.",
+    description:
+      "A personal project: a desktop application for managing student records, with validated input and data saved to a local CSV file so records persist between sessions.",
+    stack: ["Java", "Java Swing", "CSV storage"],
+    concept: false,
+    personal: true,
+    repo: "https://github.com/Sinan313/StudentManagementSystem",
+    image: { src: "/images/student-management-system.png", alt: "Student Management System showing a table of student records with search and edit controls", width: 1080, height: 540 },
+    visual: { variant: "editorial", accent: "#3B82F6" },
+    brief:
+      "Student records are easy to mishandle in loose files. This app keeps them in one place, with a table view, search and checks that reject incomplete or duplicate entries.",
+    approach: [
+      "Separated into model, validator, repository and UI classes so each part can be tested on its own.",
+      "Records persist to a CSV file, so no database server or external libraries are needed.",
+      "Includes automated tests for the repository layer and run scripts for Windows and macOS/Linux.",
+    ],
+    features: [
+      "Add, update and delete students, with a delete confirmation",
+      "Sortable table view",
+      "Search by ID, name, age, email, phone or course",
+      "Validation for required fields and duplicate data",
+      "CSV persistence between sessions",
+    ],
+  },
+  {
+    slug: "assignment-tracker",
+    title: "Assignment Tracker",
+    category: "Web App",
+    year: 2026,
+    summary: "A Frappe app for tracking student assignments, submissions and marks.",
+    description:
+      "A personal project built as a Frappe Framework app. It models students, subjects, assignments and submissions so a teacher can see what is due and what has been handed in.",
+    stack: ["Python", "Frappe Framework", "JavaScript"],
+    concept: false,
+    personal: true,
+    repo: "https://github.com/Sinan313/assignment_tracker",
+    visual: { variant: "dashboard", accent: "#60A5FA" },
+    brief:
+      "Keeping track of who has submitted which assignment, and when, gets messy in spreadsheets. This app gives each part its own record type and links them together.",
+    approach: [
+      "Defined four linked document types: Student, Subject, Assignment and Submission.",
+      "Assignments link to a subject and carry a due date, maximum marks and instructions.",
+      "Submissions link a student to an assignment and record the date, status, marks obtained, remarks and whether it was late.",
+    ],
+    features: [
+      "Student records with roll number, email and batch",
+      "Subjects with code and description",
+      "Assignments with due dates and maximum marks",
+      "Submissions with file attachment, marks and late flag",
+      "Installs into a Frappe bench like any other app",
+    ],
+  },
+  {
+    slug: "c-tech-solutions",
+    title: "C-Tech Solutions",
+    category: "Website",
+    year: 2025,
+    summary: "A responsive front-end landing page for an online learning platform.",
+    description:
+      "A personal front-end project built with plain HTML, CSS and JavaScript: a landing page for an online learning platform with course, resource and pricing sections.",
+    stack: ["HTML5", "CSS3", "JavaScript"],
+    concept: false,
+    personal: true,
+    repo: "https://github.com/Sinan313/c-tectsolutions",
+    visual: { variant: "storefront", accent: "#3B82F6" },
+    brief:
+      "A learning platform needs to explain what it offers quickly. This project is a single-page front end covering the platform's courses, study resources, plans and contact details.",
+    approach: [
+      "Built without frameworks to keep the page light and the code easy to follow.",
+      "Organised into clear sections: about, learning resources, courses, pricing plans and contact.",
+      "Includes searchable learning resources and sign-in and dashboard interface screens.",
+    ],
+    features: [
+      "Course and learning-resource sections",
+      "Resource search",
+      "Pricing plans section",
+      "Contact section",
+      "Account sign-in and dashboard interface screens",
+    ],
+  },
   {
     slug: "northwind-coffee",
     title: "Northwind Coffee",

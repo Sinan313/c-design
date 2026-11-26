@@ -4,7 +4,7 @@ import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Selected web design and development projects and concepts by C-DESIGN.",
+  description: "Personal projects and self-initiated concepts in web design and development by C-DESIGN.",
   alternates: { canonical: "/projects" },
   openGraph: { url: "/projects", title: "Projects | C-DESIGN" },
 };
@@ -18,7 +18,7 @@ export default function ProjectsPage() {
           Digital experiences made with purpose.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          These are self-initiated concept projects that demonstrate our approach to design and development. Client work will be added as it is delivered.
+          These are personal projects, with source code on GitHub, and self-initiated concepts that demonstrate our approach to design and development. None of them is client work; client projects will be added as they are delivered.
         </p>
         <ul className="mt-14 grid gap-6 md:grid-cols-2">
           {projects.map((p) => (
