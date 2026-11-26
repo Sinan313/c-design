@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How C-DESIGN collects and uses information submitted through this website.",
   alternates: { canonical: "/privacy" },
+  openGraph: { url: "/privacy", title: "Privacy Policy | C-DESIGN", description: "How C-DESIGN collects and uses information submitted through this website." },
 };
 
 export default function PrivacyPage() {

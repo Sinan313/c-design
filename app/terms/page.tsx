@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Terms governing use of the C-DESIGN website and enquiries.",
   alternates: { canonical: "/terms" },
+  openGraph: { url: "/terms", title: "Terms of Service | C-DESIGN", description: "Terms governing use of the C-DESIGN website and enquiries." },
 };
 
 export default function TermsPage() {

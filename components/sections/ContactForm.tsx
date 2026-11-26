@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, Loader2, Send, TriangleAlert } from "lucide-react";
+import { CheckCircle2, Info, Loader2, Send, TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { contactSchema, serviceOptions, type ContactValues } from "@/lib/validation";
 import { site, whatsappLink } from "@/lib/site";
@@ -43,7 +43,7 @@ function Field({
   );
 }
 
-export function ContactForm() {
+export function ContactForm({ deliveryConfigured = true }: { deliveryConfigured?: boolean }) {
   const wa = whatsappLink();
   const [status, setStatus] = useState<Status>("idle");
   const [serverError, setServerError] = useState("");
@@ -118,6 +118,32 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5 rounded-2xl border border-line bg-card p-6 md:p-8">
+      {!deliveryConfigured && (
+        <div role="note" className="flex items-start gap-3 rounded-xl border border-primary/40 bg-primary/10 p-4 text-sm text-muted">
+          <Info className="mt-0.5 size-4 shrink-0 text-primary-hover" aria-hidden="true" />
+          <p>
+            Online enquiries aren&apos;t switched on yet. Please contact us directly
+            {wa ? (
+              <>
+                {" "}on{" "}
+                <a href={wa} target="_blank" rel="noopener noreferrer" className="font-medium text-white underline underline-offset-4">
+                  WhatsApp
+                </a>
+              </>
+            ) : null}
+            {site.email ? (
+              <>
+                {wa ? " or by email at " : " at "}
+                <a href={`mailto:${site.email}`} className="font-medium text-white underline underline-offset-4">
+                  {site.email}
+                </a>
+              </>
+            ) : null}
+            .
+          </p>
+        </div>
+      )}
+
       {/* Honeypot: hidden from people and assistive tech, bots tend to fill it in. */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
         <label htmlFor="website">Website</label>

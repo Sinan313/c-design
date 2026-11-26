@@ -15,7 +15,11 @@ export const site = {
   title: "C-DESIGN | Professional Web Design & Development",
   description:
     "C-DESIGN creates modern, responsive and professional websites for businesses, startups and individuals.",
-  url: (env(process.env.NEXT_PUBLIC_SITE_URL) ?? "http://localhost:3000").replace(/\/$/, ""),
+  url: (
+    env(process.env.NEXT_PUBLIC_SITE_URL) ??
+    // Vercel provides the production domain automatically, so canonicals are never "localhost" in production.
+    (env(process.env.VERCEL_PROJECT_PRODUCTION_URL) ? `https://${env(process.env.VERCEL_PROJECT_PRODUCTION_URL)}` : "http://localhost:3000")
+  ).replace(/\/$/, ""),
 
   // --- Contact channels (env vars override; empty values are hidden) ---
   email: env(process.env.NEXT_PUBLIC_CONTACT_EMAIL) ?? "sinancheelath876@gmail.com",
@@ -31,7 +35,7 @@ export const site = {
   // --- Founder ---
   founder: {
     name: "Mohammed Sinan C",
-    role: "Founder & Frontend Web Developer",
+    role: "Founder & Web Developer",
     /** Short line used in cards and structured data. */
     summary: "Founder of C-DESIGN and a web developer building modern, functional and user-focused digital experiences.",
     /** Biography paragraphs, in order. */
@@ -47,7 +51,7 @@ export const site = {
       status: "Currently pursuing",
     },
     /** Path inside /public, e.g. "/images/founder.jpg". Leave undefined to show a placeholder. */
-    photo: undefined as string | undefined,
+    photo: "/images/founder.jpg" as string | undefined,
     portfolioUrl: env(process.env.NEXT_PUBLIC_PORTFOLIO_URL) ?? "https://sinan313.github.io/Mohammed-Sinan-Portfolio/",
     skills: [
       "HTML5",

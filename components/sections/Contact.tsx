@@ -6,6 +6,8 @@ import { InstagramIcon, LinkedinIcon, WhatsappIcon } from "@/components/ui/socia
 import { site, whatsappLink } from "@/lib/site";
 
 export function Contact() {
+  // Read at build/render time on the server; secrets never reach the client.
+  const deliveryConfigured = Boolean(process.env.RESEND_API_KEY && process.env.CONTACT_TO_EMAIL && process.env.CONTACT_FROM_EMAIL);
   const wa = whatsappLink();
   const rows = [
     site.email && { label: site.email, href: `mailto:${site.email}`, Icon: Mail, external: false },
@@ -56,7 +58,7 @@ export function Contact() {
           )}
         </div>
         <Reveal delay={0.1}>
-          <ContactForm />
+          <ContactForm deliveryConfigured={deliveryConfigured} />
         </Reveal>
       </div>
     </section>
