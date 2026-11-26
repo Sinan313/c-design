@@ -45,7 +45,12 @@ No secret keys are needed. Do not commit real `.env` files.
 
 ## Contact form
 
-The enquiry form validates input in the browser (React Hook Form + Zod). When a visitor clicks **Send via WhatsApp** or **Send via Email**, WhatsApp (`wa.me`) or their email app (`mailto:`) opens with the enquiry prefilled for the studio's number and address from `lib/site.ts`. Nothing is stored on a server and no API keys are required. A button is hidden if its contact detail is not set.
+The form validates input in the browser (React Hook Form + Zod), then the visitor picks a channel:
+
+- **Send via Email** posts the enquiry to [FormSubmit](https://formsubmit.co), which forwards it to `site.email` (no API key, no server code). **One-time setup:** the first submission after deploying triggers an activation email to that inbox. Open it and click *Activate Form*; after that every enquiry is delivered. If sending fails, the form offers a `mailto:` and WhatsApp fallback.
+- **Send via WhatsApp** opens `wa.me` with the enquiry prefilled; the visitor presses send.
+
+A button is hidden if its contact detail is not set in `lib/site.ts`.
 
 ## Deploy to Vercel
 
@@ -56,4 +61,4 @@ The enquiry form validates input in the browser (React Hook Form + Zod). When a 
 
 ## Before going live
 
-Add a founder photo (`photo` in `lib/site.ts`, file in `public/images/`), add Instagram/LinkedIn links when you have them, swap concept projects for real work and screenshots as you complete it, send a test enquiry through both buttons.
+Add a founder photo (`photo` in `lib/site.ts`, file in `public/images/`), add Instagram/LinkedIn links when you have them, swap concept projects for real work and screenshots as you complete it, send a test email enquiry and click *Activate Form* in the activation email FormSubmit sends you, then test WhatsApp.

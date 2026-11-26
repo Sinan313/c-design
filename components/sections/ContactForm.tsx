@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, Mail } from "lucide-react";
+import { CheckCircle2, Loader2, Mail, TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { contactSchema, serviceOptions, type ContactValues } from "@/lib/validation";
 import { site } from "@/lib/site";
-import { emailEnquiryUrl, whatsappEnquiryUrl } from "@/lib/enquiry";
+import { emailEnquiryUrl, sendEnquiryByEmail, whatsappEnquiryUrl } from "@/lib/enquiry";
 import { WhatsappIcon } from "@/components/ui/social-icons";
 import { cn } from "@/lib/utils";
 
@@ -46,6 +46,9 @@ function Field({
 
 export function ContactForm() {
   const [sent, setSent] = useState<Channel | null>(null);
+  const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [lastValues, setLastValues] = useState<ContactValues | null>(null);
 
   const {
     register,
@@ -65,16 +68,28 @@ export function ContactForm() {
   const waAvailable = Boolean(site.whatsappNumber);
   const emailAvailable = Boolean(site.email);
 
-  function send(channel: Channel) {
+  function sendWhatsApp() {
     return handleSubmit((values) => {
-      if (channel === "whatsapp") {
-        const url = whatsappEnquiryUrl(values);
-        if (url) window.open(url, "_blank", "noopener,noreferrer");
-      } else {
-        const url = emailEnquiryUrl(values);
-        if (url) window.location.href = url;
+      setFailed(false);
+      const url = whatsappEnquiryUrl(values);
+      if (url) window.open(url, "_blank", "noopener,noreferrer");
+      setSent("whatsapp");
+    });
+  }
+
+  function sendEmail() {
+    return handleSubmit(async (values) => {
+      setFailed(false);
+      setSending(true);
+      setLastValues(values);
+      try {
+        await sendEnquiryByEmail(values);
+        setSent("email");
+      } catch {
+        setFailed(true);
+      } finally {
+        setSending(false);
       }
-      setSent(channel);
     });
   }
 
@@ -83,22 +98,12 @@ export function ContactForm() {
       <div role="status" className="flex flex-col items-start gap-4 rounded-2xl border border-primary/50 bg-card p-8">
         <CheckCircle2 className="size-8 text-primary-hover" aria-hidden="true" />
         <h3 className="text-2xl font-semibold tracking-tight">
-          {sent === "whatsapp" ? "Your WhatsApp message is ready." : "Your email is ready to send."}
+          {sent === "whatsapp" ? "Your WhatsApp message is ready." : "Thanks, your enquiry has been sent."}
         </h3>
         <p className="text-muted">
           {sent === "whatsapp"
-            ? "WhatsApp should have opened with your enquiry filled in. Press send there to deliver it to "
-            : "Your email app should have opened with your enquiry filled in. Press send there to deliver it to "}
-          {site.founder.name}. Nothing is sent until you do.
-          {sent === "email" && emailAvailable && (
-            <>
-              {" "}No email app opened? Write to{" "}
-              <a href={`mailto:${site.email}`} className="text-white underline underline-offset-4 hover:text-primary-hover">
-                {site.email}
-              </a>{" "}
-              directly.
-            </>
-          )}
+            ? `WhatsApp should have opened with your enquiry filled in. Press send there to deliver it to ${site.founder.name}. Nothing is sent until you do.`
+            : `${site.founder.name} has received your details and will reply to the email address you provided.`}
         </p>
         <Button
           variant="secondary"
@@ -168,21 +173,46 @@ export function ContactForm() {
         <textarea id="message" rows={5} className={cn(field, "resize-y")} placeholder="Tell us about your business, goals and what you need." {...aria("message")} {...register("message")} />
       </Field>
 
+      {failed && (
+        <p role="alert" className="flex items-start gap-2 rounded-xl border border-red-400/40 bg-red-400/10 p-4 text-sm text-red-300">
+          <TriangleAlert className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+          <span>
+            We couldn&apos;t send your enquiry. Please try again, or{" "}
+            {lastValues && emailEnquiryUrl(lastValues) ? (
+              <a href={emailEnquiryUrl(lastValues)} className="underline underline-offset-4">
+                open it in your email app
+              </a>
+            ) : (
+              "email us directly"
+            )}
+            {waAvailable ? " or use WhatsApp." : "."}
+          </span>
+        </p>
+      )}
+
       <div className="space-y-3 pt-1">
         <div className="flex flex-col gap-3 sm:flex-row">
           {waAvailable && (
-            <Button type="button" size="lg" onClick={send("whatsapp")} className="w-full sm:w-auto">
+            <Button type="button" size="lg" onClick={sendWhatsApp()} className="w-full sm:w-auto">
               <WhatsappIcon className="size-4" /> Send via WhatsApp
             </Button>
           )}
           {emailAvailable && (
-            <Button type="button" size="lg" variant="secondary" onClick={send("email")} className="w-full sm:w-auto">
-              <Mail className="size-4" aria-hidden="true" /> Send via Email
+            <Button type="button" size="lg" variant="secondary" onClick={sendEmail()} disabled={sending} className="w-full sm:w-auto">
+              {sending ? (
+                <>
+                  <Loader2 className="size-4 animate-spin" aria-hidden="true" /> Sending…
+                </>
+              ) : (
+                <>
+                  <Mail className="size-4" aria-hidden="true" /> Send via Email
+                </>
+              )}
             </Button>
           )}
         </div>
         <p className="text-sm text-muted">
-          Your enquiry opens prefilled in WhatsApp or your email app, so you can review it before sending.
+          Email goes straight to the studio inbox. WhatsApp opens with your enquiry prefilled so you can review it before sending.
         </p>
       </div>
     </form>
