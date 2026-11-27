@@ -18,7 +18,12 @@ export const site = {
   url: (
     env(process.env.NEXT_PUBLIC_SITE_URL) ??
     // Vercel provides the production domain automatically, so canonicals are never "localhost" in production.
-    (env(process.env.VERCEL_PROJECT_PRODUCTION_URL) ? `https://${env(process.env.VERCEL_PROJECT_PRODUCTION_URL)}` : "http://localhost:3000")
+    (env(process.env.VERCEL_PROJECT_PRODUCTION_URL)
+      ? `https://${env(process.env.VERCEL_PROJECT_PRODUCTION_URL)}`
+      : process.env.NODE_ENV === "production"
+        ? // Fallback for other hosts (e.g. Cloudflare). Set NEXT_PUBLIC_SITE_URL to your final domain.
+          "https://c-design.sinancheelath876.workers.dev"
+        : "http://localhost:3000")
   ).replace(/\/$/, ""),
 
   // --- Contact channels (env vars override; empty values are hidden) ---
