@@ -53,7 +53,10 @@ export default async function ProjectPage({ params }: Props) {
           <p className="mt-6 text-lg leading-relaxed text-muted">{project.description}</p>
         </header>
 
-        <div className="mt-12 aspect-[16/9] overflow-hidden rounded-2xl border border-line">
+        <div
+          className="mt-12 overflow-hidden rounded-2xl border border-line"
+          style={{ aspectRatio: project.image ? `${project.image.width} / ${project.image.height}` : "16 / 9" }}
+        >
           <ProjectVisual project={project} priority />
         </div>
 
@@ -90,6 +93,22 @@ export default async function ProjectPage({ params }: Props) {
                 <li key={s} className="rounded-md bg-bg-2 px-2.5 py-1 font-mono text-xs text-muted">{s}</li>
               ))}
             </ul>
+            {project.palette && (
+              <>
+                <h2 className="mt-6 text-sm font-medium">Colour palette</h2>
+                <ul className="mt-3 grid grid-cols-2 gap-2">
+                  {project.palette.map((c) => (
+                    <li key={c.hex} className="flex items-center gap-2.5 text-xs text-muted">
+                      <span aria-hidden="true" className="size-6 shrink-0 rounded-md border border-line" style={{ backgroundColor: c.hex }} />
+                      <span>
+                        {c.name}
+                        <span className="block font-mono text-[11px] opacity-70">{c.hex}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
             {project.concept && (
               <p className="mt-6 text-sm leading-relaxed text-muted">
                 This is a self-initiated concept for a fictional brand. It is not client work and does not represent real business results.
