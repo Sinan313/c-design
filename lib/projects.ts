@@ -108,16 +108,18 @@ export const projects: Project[] = [
     concept: false,
     personal: true,
     repo: "https://github.com/Sinan313/assignment_tracker",
+    image: { src: "/images/assignment-tracker.png", alt: "Data-model diagram of the Assignment Tracker app showing the Student, Submission, Assignment and Subject records and how they link", width: 1600, height: 1000 },
+    note: "The image is a diagram drawn from the app's record definitions, not a screenshot. The app's screens run inside a Frappe system.",
     visual: { variant: "dashboard", accent: "#60A5FA" },
     brief:
       "Keeping track of who has submitted which assignment, and when, gets messy in spreadsheets. This app gives each part its own record type and links them together.",
     approach: [
       "Defined four linked document types: Student, Subject, Assignment and Submission.",
       "Assignments link to a subject and carry a due date, maximum marks and instructions.",
-      "Submissions link a student to an assignment and record the date, status, marks obtained, remarks and whether it was late.",
+      "Submissions link a student to an assignment and record the date, an attached file, marks obtained, remarks and whether it was late, with a status of Pending, Submitted or Graded.",
     ],
     features: [
-      "Student records with roll number, email and batch",
+      "Student records with roll number, email and batch (2024, 2025 or 2026)",
       "Subjects with code and description",
       "Assignments with due dates and maximum marks",
       "Submissions with file attachment, marks and late flag",
