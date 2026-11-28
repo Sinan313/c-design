@@ -55,8 +55,6 @@ export const site = {
       programme: "BS Degree in Data Science and Applications",
       status: "Currently pursuing",
     },
-    /** Path inside /public, e.g. "/images/founder.jpg". Leave undefined to show a placeholder. */
-    photo: "/images/founder.jpg" as string | undefined,
     portfolioUrl: env(process.env.NEXT_PUBLIC_PORTFOLIO_URL) ?? "https://sinan313.github.io/Mohammed-Sinan-Portfolio/",
     skills: [
       "HTML5",

@@ -1,5 +1,4 @@
-import { ExternalLink, GraduationCap, MapPin, User } from "lucide-react";
-import Image from "next/image";
+import { ExternalLink, GraduationCap, MapPin } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { buttonVariants } from "@/components/ui/button";
@@ -25,24 +24,7 @@ export function About() {
             <article aria-labelledby="founder-name" className="h-full rounded-2xl border border-line bg-card p-6 md:p-10">
               <p className="font-mono text-xs tracking-[0.18em] text-primary-hover">MEET THE FOUNDER</p>
 
-              <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
-                {founder.photo ? (
-                  <Image
-                    src={founder.photo}
-                    alt={`Portrait of ${founder.name}`}
-                    width={128}
-                    height={128}
-                    className="size-28 shrink-0 rounded-2xl border border-line object-cover sm:size-32"
-                  />
-                ) : (
-                  <div
-                    role="img"
-                    aria-label="Founder photograph placeholder"
-                    className="flex size-28 shrink-0 items-center justify-center rounded-2xl border border-dashed border-line bg-bg text-muted sm:size-32"
-                  >
-                    <User className="size-9" aria-hidden="true" />
-                  </div>
-                )}
+              <div className="mt-6">
                 <div>
                   <h3 id="founder-name" className="text-2xl font-semibold tracking-tight sm:text-3xl">
                     {founder.name}

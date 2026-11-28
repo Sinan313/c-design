@@ -56,4 +56,4 @@ The form validates input in the browser (React Hook Form + Zod). **Send via What
 
 ## Before going live
 
-Add a founder photo (`photo` in `lib/site.ts`, file in `public/images/`), add Instagram/LinkedIn links when you have them, swap concept projects for real work and screenshots as you complete it, test the WhatsApp enquiry button.
+Add Instagram/LinkedIn links when you have them, swap concept projects for real work and screenshots as you complete it, test the WhatsApp enquiry button.
