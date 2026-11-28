@@ -189,6 +189,38 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "personal-portfolio",
+    title: "Personal Portfolio",
+    category: "Portfolio Website",
+    year: 2026,
+    summary: "The founder's own portfolio site: fast, accessible and built without frameworks.",
+    description:
+      "A personal project: the founder's portfolio, written in plain HTML, CSS and JavaScript with no build step and no third-party requests. It has light and dark themes, a mobile menu and a filterable certificates section.",
+    stack: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
+    concept: false,
+    personal: true,
+    url: "https://sinan313.github.io/Mohammed-Sinan-Portfolio/",
+    repo: "https://github.com/Sinan313/Mohammed-Sinan-Portfolio",
+    image: { src: "/images/personal-portfolio.png", alt: "Home page of the personal portfolio with a large serif headline, a portrait photograph and navigation links", width: 1536, height: 816 },
+    visual: { variant: "editorial", accent: "#60A5FA" },
+    brief:
+      "A portfolio should load instantly and be easy to read on any device. This one is built without a framework or build step, so the whole site is a handful of files that are easy to maintain.",
+    approach: [
+      "Plain HTML, CSS and JavaScript, with fonts (Inter and Instrument Serif) and icons hosted on the site itself, so pages make no third-party requests.",
+      "Design tokens drive both a light and a dark theme, switched with a toggle in the navigation.",
+      "Content is organised into clear sections: about, experience, teaching, skills, projects, education, certificates and contact.",
+      "Search-engine metadata, structured data, a sitemap and robots file are included, and the site deploys to GitHub Pages with a workflow.",
+    ],
+    features: [
+      "Light and dark themes with a toggle",
+      "Responsive layout with a mobile menu",
+      "Filterable certificates section linking to the original PDFs",
+      "Downloadable resume",
+      "Self-hosted fonts and no third-party requests",
+      "SEO metadata, sitemap and robots file",
+    ],
+  },
+  {
     slug: "northwind-coffee",
     title: "Northwind Coffee",
     category: "E-commerce",
