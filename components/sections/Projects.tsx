@@ -71,8 +71,8 @@ export function Projects() {
             <Reveal className="lg:col-span-2">
               <ProjectCard project={first} featured />
             </Reveal>
-            {rest.slice(0, 3).map((p, i) => (
-              <Reveal key={p.slug} delay={i * 0.08}>
+            {rest.map((p, i) => (
+              <Reveal key={p.slug} delay={(i % 2) * 0.08}>
                 <ProjectCard project={p} />
               </Reveal>
             ))}
