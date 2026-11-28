@@ -23,7 +23,7 @@ export default function PrivacyPage() {
         <section>
           <h2>Information we collect</h2>
           <p>
-            When you use the enquiry form, you choose how to send it. &ldquo;Send via Email&rdquo; delivers your details (your name, email address, optional business name, the service you need, optional budget and timeline, and your project description) to our inbox through FormSubmit, a third-party form-to-email service. &ldquo;Send via WhatsApp&rdquo; prepares the same message in WhatsApp, and we receive it only if you press send. This website does not otherwise store your details. If you contact us directly by email or WhatsApp, we receive the information you send.
+            The enquiry form on this website does not store or transmit your details to our servers. &ldquo;Send via WhatsApp&rdquo; prepares a message (your name, email address, optional business name, the service you need, optional budget and timeline, and your project description) in WhatsApp, and we receive it only if you press send. If you contact us directly by email or WhatsApp, we receive the information you send.
           </p>
         </section>
         <section>
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
         </section>
         <section>
           <h2>Service providers</h2>
-          <p>The website is hosted on Vercel, and email enquiries from the form are relayed by FormSubmit. Messages sent by WhatsApp pass through WhatsApp. These providers process data under their own privacy policies.</p>
+          <p>The website is hosted on a third-party platform, and messages sent by WhatsApp pass through WhatsApp. These providers process data under their own privacy policies.</p>
         </section>
         <section>
           <h2>Retention</h2>
