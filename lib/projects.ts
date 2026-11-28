@@ -201,7 +201,7 @@ export const projects: Project[] = [
     personal: true,
     url: "https://sinan313.github.io/Mohammed-Sinan-Portfolio/",
     repo: "https://github.com/Sinan313/Mohammed-Sinan-Portfolio",
-    image: { src: "/images/personal-portfolio.png", alt: "Home page of the personal portfolio with a large serif headline, a portrait photograph and navigation links", width: 1536, height: 816 },
+    image: { src: "/images/personal-portfolio.png", alt: "Certificates section of the portfolio with filter tabs and a grid of certificate cards, each with a View certificate link", width: 899, height: 731 },
     visual: { variant: "editorial", accent: "#60A5FA" },
     brief:
       "A portfolio should load instantly and be easy to read on any device. This one is built without a framework or build step, so the whole site is a handful of files that are easy to maintain.",
